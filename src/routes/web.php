@@ -29,3 +29,5 @@ Route::get('/author/{author:slug}', [FrontController::class, 'author'])->name('f
 Route::get('/search', [FrontController::class, 'search'])->name('front.search');
 
 Route::post('/details/{articleNews}/comment', [FrontController::class, 'comment'])->name('front.comment');
+
+Route::post('/details/{comment}/reply', [FrontController::class, 'reply'])->name('front.reply');

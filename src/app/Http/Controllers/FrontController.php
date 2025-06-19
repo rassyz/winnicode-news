@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use App\Models\Comment;
 use App\Models\Category;
 use App\Models\BannerAds;
 use App\Models\ArticleNews;
@@ -202,6 +203,33 @@ class FrontController extends Controller
         $comments = $articleNews->comments()->latest()->get();
 
         return redirect()->to(url()->previous() . '#comment-section')->with('success', 'Comment added successfully')->with('comments', $comments);
+    }
+
+    public function reply(Request $request, Comment $comment)
+    {
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'reply' => ['required', 'string', 'max:255'],
+        ]);
+
+        $badWords = ['bodoh', 'goblok', 'bangsat', 'anjing'];
+        $replyLower = strtolower($validated['reply']);
+
+        foreach ($badWords as $badWord) {
+            if (str_contains($replyLower, $badWord)) {
+                return back()->withErrors(['reply' => 'Reply mengandung kata yang tidak pantas.'])
+                            ->withInput()
+                            ->withFragment('comment-section');
+            }
+        }
+
+        $comment->replyComments()->create([
+            'name' => $validated['name'],
+            'review' => $validated['reply'],
+        ]);
+
+        return back()->with('success', 'Reply berhasil ditambahkan.')
+                    ->withFragment('comment-section');
     }
 
 }
