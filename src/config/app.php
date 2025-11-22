@@ -124,4 +124,5 @@ return [
     ],
 
     'asset_prefix' => env('ASSET_PREFIX', ''),
+
 ];

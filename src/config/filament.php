@@ -98,4 +98,6 @@ return [
 
     'system_route_prefix' => 'filament',
 
+    // 'favicon' => asset('assets/images/logos/logo.png'),
+
 ];

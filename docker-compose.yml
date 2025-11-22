@@ -10,6 +10,7 @@ services:
     working_dir: /var/www/html
     depends_on:
       - winnicode_db
+
   winnicode_db:
     image: mariadb:10.11
     container_name: winnicode_db
@@ -27,6 +28,7 @@ services:
       TZ: Asia/Jakarta
       SERVICE_TAGS: dev
       SERVICE_NAME: winnicode_db
+
   winnicode_nginx:
     build: ./nginx
     image: winnicode_nginx:latest

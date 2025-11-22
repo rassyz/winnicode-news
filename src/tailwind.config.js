@@ -17,10 +17,12 @@ export default {
         "./app/Filament/**/*.php",
         "./resources/views/filament/**/*.blade.php",
         "./vendor/filament/**/*.blade.php",
+        "./resources/**/*.js",
+        "./resources/**/*.vue",
     ],
     darkMode: "class",
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
     ],
-}
+};

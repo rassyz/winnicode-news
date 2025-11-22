@@ -20,7 +20,7 @@
         <!-- Headline Section -->
         <div id="Headline" class="max-w-[1130px] mx-auto flex flex-col gap-4 items-center">
             <p class="w-fit text-[#A3A6AE]">{{ $articleNews->created_at->diffForHumans() }} • {{ $articleNews->category->name }}</p>
-            <h1 id="Title" class="font-bold text-[36px] leading-[48px] sm:text-[46px] sm:leading-[60px] text-center two-lines">
+            <h1 class="text-[36px] sm:text-[46px] font-bold leading-[1.3] text-center tracking-normal [font-feature-settings:'liga'_0]">
                 {{ $articleNews->name }}
             </h1>
             <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-[70px]">
@@ -285,7 +285,7 @@
                         <div class="mx-4 sm:mx-0 rounded-[20px] ring-1 ring-[#EEF0F7] p-[20px] sm:p-[26px] flex flex-col gap-4 hover:ring-2 hover:ring-[#FF6B18] transition-all duration-300 bg-white">
                             <div class="thumbnail-container w-full h-[200px] rounded-[20px] flex shrink-0 overflow-hidden relative">
                                 <p class="badge-white absolute top-5 left-5 rounded-full p-[8px_18px] bg-white font-bold text-xs leading-[18px]">
-                                    SPORT
+                                    {{ $article->category->name }}
                                 </p>
                                 <img src="{{ Storage::url($article->thumbnail) }}" class="object-cover w-full h-full" alt="thumbnail" />
                             </div>
